@@ -13,3 +13,15 @@ export const submitForm = (req, res) => {
     });
 }
 
+export const grabData = (req, res) => {
+  const q = "SELECT * FROM mentalFormAnswers";
+  
+  db.query(q, (err, data) => {
+    if(err){
+      console.log(err);
+      return res.status(500).json(err);
+    }
+    return res.json(data);
+  })
+}
+

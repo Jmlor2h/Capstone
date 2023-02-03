@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import f1 from "../images/mentally-logo.png";
+import f1 from "../assets/mentally-logo.png";
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -30,89 +30,30 @@ const Register = () => {
   };
 
   return (
-    // <div className="auth">
-    //   <h1>Register</h1>
-    //   <form>
-    //     <input
-    //       required
-    //       type="text"
-    //       placeholder="username"
-    //       name="username"
-    //       onChange={handleChange}
-    //     />
-    //     <input
-    //       required
-    //       type="email"
-    //       placeholder="email"
-    //       name="email"
-    //       onChange={handleChange}
-    //     />
-    //     <input
-    //       required
-    //       type="password"
-    //       placeholder="password"
-    //       name="password"
-    //       onChange={handleChange}
-    //     />
-    //     <button onClick={handleSubmit}>Register</button>
-    //     {err && <p>{err}</p>}
-    //     <span>
-    //       Do you have an account? <Link to="/login">Login</Link>
-    //     </span>
-    //   </form>
-    // </div>
-    <div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src={f1} alt='IMG'/>
-				</div>
-
-				<form class="login100-form validate-form">
-					<span class="login100-form-title">
-						Employee Login
-					</span>
-
-					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="username" placeholder="Username" onChange={handleChange}/>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-
-          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email" onChange={handleChange}/>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password" onChange={handleChange}/>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-					
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" onClick={handleSubmit}>
-							Create Account
-						</button>
-					</div>
-
-					<div class="text-center p-t-136">
-						<Link class="txt2" to="/login">
-							Return to Login
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</Link>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+    <div className=" flex justify-center h-screen bg-ally7">
+           <div className="w-full max-w-sm">
+        <form className="bg-ally6 p-8 rounded-lg shadow-md">
+          <img src={f1} alt="Mentally Logo" className="mx-auto h-12"/>
+          <h2 className="text-lg text-center font-medium mt-4 mb-2 text-ally7">Employee Login</h2>
+          <div className="mb-4">
+            <label className="block font-medium text-ally7 mb-2">Username</label>
+            <input type="text" name="username" className="w-full border bg-ally7 border-gray-400 p-2 rounded-lg" placeholder="Username" onChange={handleChange} />
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium text-ally7 mb-2">Email</label>
+            <input type="email" name="email" className="w-full border bg-ally7 border-gray-400 p-2 rounded-lg" placeholder="Email" onChange={handleChange} />
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium text-ally7 mb-2">Password</label>
+            <input type="password" name="password" className="w-full border bg-ally7 border-gray-400 p-2 rounded-lg" placeholder="Password" onChange={handleChange} />
+          </div>
+          <button className="bg-ally7 text-ally2 p-2 rounded-lg hover:bg-ally4" onClick={handleSubmit}>Create Account</button>
+          <div className="mt-4 text-center">
+            <Link to="/login" className="text-ally7 hover:text-ally4">Return to Login</Link>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 

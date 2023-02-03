@@ -3,6 +3,11 @@ export const sendMessage = (req, res) => {
     
     const q = "INSERT INTO messages(`senderID`,`recipientID`,`message`, `chatID`, `date`) VALUES (?)";
     const values = [req.body.senderID, req.body.recipientID, req.body.message, req.body.chatID, req.body.date];
+    db.query("SELECT * FROM Chat WHERE Chat.id = ?", req.body.chatID, (err, data) => {
+      if(data.flag === 'closed'){
+        db.query("INSERT INTO Chat(flag) VALUES ('open') WHERE chat.id = ?", req.body.chatID);
+      }
+    })
 
     db.query(q, [values], (err, data) => {
       if (err){ 
@@ -19,11 +24,12 @@ export const obtainMessage = (req, res) => {
   const values =[req.body.chatID, req.body.senderID];
 
   db.query(q, values, (err, data) => {
+    console.log(data);
     if (err) {
       console.log(err);
     }
     if (data.length === 0) {
-      const q = "INSERT INTO Chat('flag') VALUES ('open')";
+      const q = "INSERT INTO Chat(flag) VALUES ('open')";
       db.query(q, (err, data) => {
         if(err){
           console.log(err);
@@ -43,8 +49,9 @@ export const obtainAdminMessage = (req, res) => {
   const values = [req.body.chatID];
 
   db.query(q, [values], (err, data) => {
+    console.log(data);
     if (data.length === 0) {
-      const q = "INSERT INTO Chat('flag') VALUES ('open')";
+      const q = "INSERT INTO Chat(flag) VALUES ('open')";
       db.query(q, (err, data) => {
         if(err){
           console.log(err);

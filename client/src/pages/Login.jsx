@@ -38,7 +38,7 @@ const Login = () => {
           <h2 className="text-lg font-medium text-center mb-4 text-ally7">Customer Login</h2>
           <div className="mb-4">
             <input 
-              className="w-full border border-ally10 p-2 rounded-lg" 
+              className="w-full border border-ally10 p-2 hover:ally10 rounded-lg" 
               type="text" 
               placeholder="Username"
               name="username"

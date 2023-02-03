@@ -2,7 +2,7 @@ import mysql from "mysql2"
 
 // this would need to be changed and tables created with mysql
 export const db = mysql.createConnection({
-  host:"localhost",
+host:"127.0.0.1",
   user:"root",
   password: "nylah0424",
   database:"blog"

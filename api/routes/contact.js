@@ -1,8 +1,8 @@
 import express from "express"
-import { submitForm } from "../controllers/contact.js"
+import { submitForm, grabData } from "../controllers/contact.js"
 
 const router = express.Router()
 
-router.post("/submitForm", submitForm)
-
+router.post("/submitForm", submitForm);
+router.post("/grabData", grabData);
 export default router

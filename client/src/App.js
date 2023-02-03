@@ -3,7 +3,6 @@ import {
   RouterProvider,
   Outlet,
 } from "react-router-dom";
-import "./style.scss";
 import "./index.css";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -17,12 +16,14 @@ import AdminChat from "./pages/adminDash";
 import AdminNavigationBar from "./components/Navbar";
 import { AuthContext } from "./context/authContext";
 import { useContext } from "react";
+import VisitorNavigationBar from "./components/VisitorNav";
+import MentalPage from "./pages/MentalPage";
 
 const Layout = () => {
   const { currentUser } = useContext(AuthContext);
   return (
     <>
-      { currentUser === null ? <NavigationBar/> : currentUser.id === 4 ? <AdminNavigationBar /> : <NavigationBar />}
+      { currentUser === 0 ? <VisitorNavigationBar/> : currentUser.id === 4 ? <AdminNavigationBar /> : <NavigationBar />}
       <Outlet />
       <Footer />
     </>
@@ -53,27 +54,31 @@ const router = createBrowserRouter([
       {
         path:"/admDash",
         element: <AdminChat/>
+      },
+      {
+        path:"/mentAllyForm",
+        element: <MentalPage/>
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "*",  // this is a catch-all route
+        element: <h1>404: Page Not Found</h1>,
       }
     ],
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "*",  // this is a catch-all route
-    element: <h1>404: Page Not Found</h1>,
   },
 ]);
 
 function App() {
   return (
     <div className="app">
-      <div className="container">
+      <div class="w-full">
         <RouterProvider router={router} />
       </div>
     </div>

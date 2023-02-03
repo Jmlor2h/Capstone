@@ -2,9 +2,16 @@ import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../context/authContext';
 import img1 from "../images/mentally-logo.png";
-
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 const NavigationBar = () => {
 const { currentUser, logout } = useContext(AuthContext);
+let navigate = useNavigate();
+const logouttt = () => {
+  navigate('/');
+  logout();
+}
+const [open, setOpen] = useState(false);
 
 return (
 <div class="bg-ally3">
@@ -27,6 +34,16 @@ myHealth360
 </Link>
 </li>
 <li>
+ <Link
+to="/Motherhood360"
+aria-label="Our product"
+title="Our product"
+class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+>
+Motherhood360
+</Link>
+</li>
+<li>
 <Link
 to="/contact"
 aria-label="Our product"
@@ -34,6 +51,16 @@ title="Our product"
 class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
 >
 Contact
+</Link>
+</li>
+<li>
+<Link
+to="/mentAllyForm"
+aria-label="Our product"
+title="Our product"
+class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+>
+myMind360
 </Link>
 </li>
 <li>
@@ -51,7 +78,7 @@ Chat
 <div class="flex items-center hidden space-x-8 lg:flex">
 <span>{currentUser?.username}</span>
           {currentUser ? (
-            <span onClick={logout}>Logout</span>
+            <span onClick={logouttt}>Logout</span>
           ) : (
             <Link className="link" to="/login">
                   Login
@@ -63,6 +90,7 @@ Chat
                 aria-label="Open Menu"
                 title="Open Menu"
                 class="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
+                onClick={() => setOpen(!open)}
               >
                 <svg class="w-5 text-gray-600" viewBox="0 0 24 24">
                   <path
@@ -82,7 +110,84 @@ Chat
             </div>
           </div>
         </div>
+        {open &&(
+          
+   <div className="bg-ally3 w-full absolute left-0 top-10 mt-10 shadow-lg rounded-lg z-10">
+    <div>
+      <ul class="flex flex-col items-center">
+        <li>
+        <span class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400 py-3 px-3 block w-full">{`Welcome back ${currentUser?.username}`}</span>
+        </li>
+        <li>
+          <Link
+            to="/MyHealth360"
+            aria-label="Our product"
+            title="Our product"
+            class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400 py-3 px-3 block w-full"
+            onClick={() => setOpen(false)}
+          >
+            myHealth360
+          </Link>
+        </li>
+        <li>
+ <Link
+to="/Motherhood360"
+aria-label="Our product"
+title="Our product"
+class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+>
+Motherhood360
+</Link>
+</li>
+        <li>
+          <Link
+            to="/contact"
+            aria-label="Our product"
+            title="Our product"
+            class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400 py-3 px-3 block w-full"
+            onClick={() => setOpen(false)}
+          >
+            Contact
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/mentAllyForm"
+            aria-label="Our product"
+            title="Our product"
+            class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400 py-3 px-3 block w-full"
+            onClick={() => setOpen(false)}
+          >
+            myMind360
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/chat"
+            aria-label="Our product"
+            title="Our product"
+            class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400 py-3 px-3 block w-full"
+            onClick={() => setOpen(false)}
+          >
+            Chat
+          </Link>
+        </li>
+        <li>
+          {currentUser ? (
+            <button class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400 py-3 px-3 block w-full" onClick={logouttt}>Logout</button>
+          ) : (
+            <Link className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400 py-3 px-3 block w-full" to="/login">
+                  Login
+                </Link>
+          )}
+        </li>
+      </ul>
+    </div>
+    </div>
+    
+)}
       </div>
+      
     );
   };
 

@@ -15,8 +15,19 @@ module.exports = {
         ally7: '#FFF7F1',
         ally8: '#00857F',
         ally9: '#8A3877',
-        ally10: '#371447'
+        ally10: '#371447',
+        purple: "#650360",
+        pink: "#FB2576",
+        pink2: "#DC6594",
+        white: "#FFF7F1",
+        white2: "#FFFFFF",
+        teal: "#00857F",
+        black: "#000000",
+        blue: "#650360",
       }
+    },
+    fontFamily: {
+      allyfont: ["Poppins", "sans-serif"],
     },
     screens: {
       sm: '640px',

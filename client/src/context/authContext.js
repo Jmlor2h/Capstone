@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 
 export const AuthContexProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || null
+    JSON.parse(localStorage.getItem("user")) || 0
   );
 
   const login = async (inputs) => {
@@ -19,7 +19,7 @@ export const AuthContexProvider = ({ children }) => {
     console.log('axios route logout called');
     localStorage.removeItem("user");
     console.log('user removed');
-    setCurrentUser(null);
+    setCurrentUser(0);
     console.log('user set to null');
   };
 
